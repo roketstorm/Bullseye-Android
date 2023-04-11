@@ -7,6 +7,7 @@ import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.appcompat.app.AlertDialog
 import com.roketstorm.bullseye.databinding.ActivityMainBinding
+import kotlin.math.abs
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -43,13 +44,7 @@ class MainActivity : AppCompatActivity() {
     private fun pointsForCurrentRound(): Int {
         val maxScore = 100
 
-        val difference = if (sliderValue > targetValue) {
-            sliderValue - targetValue
-        } else  if (targetValue > sliderValue) {
-            targetValue - sliderValue
-        } else {
-            0
-        }
+        val difference = abs(targetValue - sliderValue)
         return maxScore - difference
     }
 
